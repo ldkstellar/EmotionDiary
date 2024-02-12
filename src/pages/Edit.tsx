@@ -1,14 +1,29 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
-
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 const Edit = ()=>{
     const navigate = useNavigate();
     const [searchParms , setSearchParms] = useSearchParams();
     const id =  searchParms.get("id");
-    console.log(`id : `,id);
-    const mode = searchParms.get('mode');
-    console.log(`mode :`,mode);
-    
-    
+    const mode = searchParms.get("mode");
+
+    const who = searchParms.get('who');
+    const age = searchParms.get('age');
+
+    if (mode) {
+        console.log(`mode`,mode);   
+    }
+
+    if (id) {
+        console.log(id);
+    }
+
+    if (age) {
+        console.log(`age :`,age);
+    }
+
+    if (who) {
+        console.log(`who :`,who);
+    }
+
     return(
         <div>
             <h2>수정</h2>

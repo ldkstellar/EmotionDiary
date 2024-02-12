@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 const Diary = ()=>{
-    
+    const {id} = useParams();// 커스텀 훅  
+    console.log(id);
     return(
         <div>
             <h2>일기장</h2>
