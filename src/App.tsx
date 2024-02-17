@@ -7,12 +7,15 @@ import Edit from './pages/Edit';
 import NEW from './pages/New';
 import Diary from './pages/Diary';
 import RouteTest from './components/RouteTest';
-
+import Mybutton from './components/MyButton';
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <h2>동규의 라우팅 공부 </h2>
+        <Mybutton text={`버튼`} onClick={()=>{alert(`버튼클릭`)}} type={`positive`}/>
+        <Mybutton text={`버튼`} onClick={()=>{alert(`버튼클릭`)}} type={`negative`}/>
+        <Mybutton text={`버튼`} onClick={()=>{alert(`버튼클릭`)}} type={`default`}/>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/new' element={<NEW/>}/>
