@@ -56,6 +56,54 @@ body{
 }
 
 .Mybutton_default{
-  background-color: #ecec;
-  color:yellow;
+  background-color: #ececec;
+  color:black;
 }
+
+.Mybutton_positive{
+  background-color: #64C964;
+  color: white;
+
+}
+
+.Mybutton_negative{
+  background-color: #fd565f;
+  color:white;
+}
+
+  /* HEADER */
+header{
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+  
+}
+
+ header > div{
+  display: flex;
+ }
+
+ header .head_text{
+  width: 50%;
+  font-size: 25px;
+  justify-content: center;
+ }
+
+ header .head_btn_left{
+  font-size: 25px;
+  width: 25%;
+  justify-content: start;  
+ }
+
+ header .head_btn_right{
+  font-size: 25px;
+  width: 25%;
+  justify-content: end;
+ }
+
+ header button{
+  font-family: "Nanum Pen Script";
+ }

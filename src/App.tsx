@@ -8,10 +8,12 @@ import NEW from './pages/New';
 import Diary from './pages/Diary';
 import RouteTest from './components/RouteTest';
 import Mybutton from './components/MyButton';
+import MyHeader from './components/Myheader';
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <MyHeader leftChild={<Mybutton text='왼쪽버튼' onClick={()=>alert('왼쪽 클릭')}/>} headerText='나만의일기장' rightChild={<Mybutton text='오른쪽 버튼' onClick={()=>{alert('오른쪽 버튼 클릭')}}/>}/>
         <h2>동규의 라우팅 공부 </h2>
         <Mybutton text={`버튼`} onClick={()=>{alert(`버튼클릭`)}} type={`positive`}/>
         <Mybutton text={`버튼`} onClick={()=>{alert(`버튼클릭`)}} type={`negative`}/>
