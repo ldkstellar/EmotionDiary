@@ -25,6 +25,7 @@ const dummyData:info[] = [
     date:1709015129674
 
   },
+
   {
     id:2,
     emotion:2,
@@ -32,6 +33,7 @@ const dummyData:info[] = [
     date:1709015129675
 
   },
+
   {
     id:3,
     emotion:3,
@@ -39,10 +41,23 @@ const dummyData:info[] = [
     date:1709015129676
 
   },
+
+  {
+    id:4,
+    emotion:4,
+    content:"오늘의 일기 4번",
+    date:1709015129677
+
+  },
+  
+  {
+    id:5,
+    emotion:5,
+    content:"오늘의 일기 5번",
+    date:1709015129678
+
+  },
 ]
-
-
-
 
 const reducer = (state:info[],action:any)=>{
   let newState = [];
