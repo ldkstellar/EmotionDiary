@@ -127,7 +127,7 @@ function App() {
               <Route path='/' element={<Home/>}/>
               <Route path='/new' element={<NEW/>}/>
               <Route path='/diary/:id' element={<Diary/>}/>
-              <Route path='/edit' element={<Edit/>}/>
+              <Route path='/edit/:id' element={<Edit/>}/>
             </Routes>
             <a href='/new'>new로 이동</a>
             <br/>

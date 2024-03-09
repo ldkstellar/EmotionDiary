@@ -45,7 +45,6 @@ const Home =()=>{
                 leftChild={<Mybutton text="<" onClick={decreseMonth}/>}
                 rightChild={<Mybutton text=">" onClick={increseMonth}/>}
             />
-            
             <DiaryList diaryList={diaryList}/>
             
         </div>
