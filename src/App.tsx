@@ -15,8 +15,17 @@ export interface info{
   emotion:number,
 }
 
+export interface dispatchFunc{
+  onCreate:(date:any,content:string,emotion:number)=>void,
+  onEdit:(targetId:number,date:any,content:string,emotion:number)=>void,
+  onRemove:(targetId:number)=>void,
+
+
+}
+
 export const DiaryStateContext = React.createContext<info[]>([]);
-export const DiaryDispatchContext = React.createContext<any|undefined>(undefined);
+export const DiaryDispatchContext = React.createContext<dispatchFunc>({onCreate: () => {},onEdit: () => {},onRemove: () => {}});
+
 const dummyData:info[] = [
   {
     id:1,
@@ -82,15 +91,15 @@ const reducer = (state:info[],action:any)=>{
     default:
       return state;
   }
-  
   return newState;
 }
 
 function App() {
+  
   const [data ,dispatch] = useReducer(reducer,dummyData);
   const dataId = useRef(0);
 
-  const onCreeate = (date:any,content:string,emotion:number)=>{
+  const onCreate = (date:any,content:string,emotion:number)=>{
     dispatch({type:"CREATE",data:{
       id: dataId.current,
       date: new Date(date).getTime(),
@@ -116,11 +125,9 @@ function App() {
     });
   }
 
-    
- 
   return (
     <DiaryStateContext.Provider value={data}>
-      <DiaryDispatchContext.Provider value={{onCreeate,onEdit,onRemove}}>
+      <DiaryDispatchContext.Provider value={{onCreate,onEdit,onRemove}}>
         <BrowserRouter>
           <div className="App">
             <Routes>
@@ -136,7 +143,6 @@ function App() {
         </BrowserRouter>
       </DiaryDispatchContext.Provider>
     </DiaryStateContext.Provider>
-   
   );
 }
 export default App;

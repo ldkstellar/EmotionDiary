@@ -16,13 +16,13 @@
     font-family: "Yeon Sung", cursive;
   }
 
-  @media (min-width: 650px){
+  @media (min-width: 800px){
     body{
-      width: 640px;
+      margin: 0 auto;
     }
   }
 
-  @media (max-width: 650px){
+  @media (max-width: 800px){
     .App{
       width: 90vw;
     }

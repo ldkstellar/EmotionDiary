@@ -7,7 +7,7 @@ import Mybutton from "./MyButton";
 interface option{
     value:string,
     name:string
-}
+};
 
 const sortOptionList = [
     {value:"latest",name:"최신순"},
@@ -18,7 +18,7 @@ const filterOptionList = [
     {value:"all",name:"전부다"},
     {value:"good",name:"좋은 감정만"},
     {value:"bad",name:"안좋은 감정만"}, 
-]
+];
 
 const ControlMenu = ({value,onChange,optionList}:{value:string,onChange:React.Dispatch<string>,optionList:option[]})=>{
     return(
@@ -36,9 +36,11 @@ const DiaryList = ({diaryList}:{diaryList:info[]})=>{
         // 비교 함수
         const compare = (a:info,b:info)=> {
             if (sortType === 'latest') {
+                // 내림차순
                 return parseInt(b.date) - parseInt(a.date);
             }
             else{
+                //  오름 차순
                 return parseInt(a.date)  - parseInt(b.date);
             }
         }
@@ -89,8 +91,6 @@ const DiaryList = ({diaryList}:{diaryList:info[]})=>{
                     />
                 </div>
             </div>
-
-
 
             {getProcessedDiaryList().map((it)=>(
                 <DiaryItem key={it.id} {...it}/>

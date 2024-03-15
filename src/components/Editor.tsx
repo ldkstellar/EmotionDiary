@@ -1,7 +1,8 @@
-import { EventHandler, MouseEventHandler, useEffect, useState } from "react";
+import { ChangeEvent, EventHandler, MouseEvent, MouseEventHandler, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import EmotionItem from "./EmotionItem";
 import Mybutton from "./MyButton";
-import  {info}  from "../App";
+
 const EmotionList = [
     {emotionId:1 , emotionName:"완전좋음"},
     {emotionId:2 , emotionName:"좋음"},
@@ -17,20 +18,23 @@ const getStringedDate = (targetDate:Date)=>{
     
     let monthString = month < 10 ? `0${month}`:`${month}`;
     let dateString = date < 10 ? `0${date}` : `${date}`;
-    return `${year}-${monthString}-${dateString}`;
-    
+    return `${year}-${monthString}-${dateString}`;    
 }
 
-const Editor =()=>{
-    
+const Editor =({onSubmit}:{onSubmit:(date: any, content: string, emotion: number)=>void})=>{
+    const navigite =  useNavigate();
+
+    const onClickSubmitButton = ()=>{
+        onSubmit(input.date,input.content,input.id);
+    }
+
     const [input ,setInput] = useState({
         id:1,
         date:new Date(),
         content:"",
     });
 
-
-    const onChangeInput = (e:any)=>{
+    const onChangeInput = (e:{target:{name:string,value:string|number}}) =>{
         
         if (typeof e.target.value === "string") {
             let dateValue = new Date(e.target.value);
@@ -40,8 +44,8 @@ const Editor =()=>{
         else if (typeof e.target.value === "number") {
             setInput({...input,["id"]:e.target.value});
         }
-        
     }
+   
 
     return(
         <div className="Editor">
@@ -64,6 +68,7 @@ const Editor =()=>{
                 </div>
                 
             </section>
+
             <section className="content_section">
                 <h4>오늘의 일기</h4>
                 <textarea placeholder="오늘은 어땟나요?"/>
@@ -71,7 +76,11 @@ const Editor =()=>{
 
             <section className="button_section">
                 <Mybutton text="취소하기" onClick={()=>{}}/>
-                <Mybutton text="작성완료" type="positive" onClick={()=>{}}/>
+                <Mybutton text="작성완료" type="positive" onClick={
+                    ()=>{
+                    onClickSubmitButton();
+                    navigite(-1);
+                }}/>
             </section>
         </div>
     );
