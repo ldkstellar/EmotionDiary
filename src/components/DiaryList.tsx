@@ -45,7 +45,7 @@ const DiaryList = ({diaryList}:{diaryList:info[]})=>{
             }
         }
 
-        const filterCallback = (item:info)=>{
+    const filterCallback = (item:info)=>{
             if (filter === "good") {
                 return item.emotion <= 3;
             }
@@ -53,7 +53,7 @@ const DiaryList = ({diaryList}:{diaryList:info[]})=>{
             else{
                 return item.emotion >3;
             }
-        }
+    }
 
         // 배열의 깊은 복사하는 방법
         const copyList:info[] = JSON.parse(JSON.stringify(diaryList));

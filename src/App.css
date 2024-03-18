@@ -45,7 +45,6 @@
     cursor: pointer;
     border:none;
     border-radius:5px;
-
     padding-top:10px;
     padding-bottom:10px;
     padding-left: 20px;
@@ -91,7 +90,7 @@
   width: 50%;
   font-size: 25px;
   justify-content: center;
- }
+}
 
   header .head_btn_left{
     font-size: 25px;
@@ -208,6 +207,7 @@
   section{
     margin-bottom: 40px;
   }
+
   .Editor > section > h4{
     font-size: 22px;
     font-weight: bold;
@@ -228,8 +228,6 @@
     resize: vertical;
     box-sizing: border-box;
   }
-
-
 
   .Editor .emotion_section .emotion_list_wrapper{
     display: flex;
@@ -255,18 +253,22 @@
     background-color: #64C964;
 
   }
+
   .EmotionItem_on_2{
     color: white;
     background-color: #9dd772;
   }
+
   .EmotionItem_on_3{
     color: white;
     background-color: #fdce17;
   }
+
   .EmotionItem_on_4{
     color: white;
     background-color: #fd8446;
   }
+
   .EmotionItem_on_5{
     color: white;
     background-color: #fd565f;

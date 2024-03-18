@@ -11,7 +11,7 @@ const DiaryItem = ({id,emotion,content,date}:info)=>{
     }
 
     const goEdit = ()=>{
-        navigate("/edit");
+        navigate(`/edit/${id}`);
     }
     return (
         <div className="DiaryItem">

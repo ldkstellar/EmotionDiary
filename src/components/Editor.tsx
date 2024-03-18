@@ -25,7 +25,8 @@ const Editor =({onSubmit}:{onSubmit:(date: any, content: string, emotion: number
     const navigite =  useNavigate();
 
     const onClickSubmitButton = ()=>{
-        onSubmit(input.date,input.content,input.id);
+        onSubmit(input.date.getTime(),input.content,input.id);
+        navigite("/",{replace:true})
     }
 
     const [input ,setInput] = useState({
@@ -34,11 +35,15 @@ const Editor =({onSubmit}:{onSubmit:(date: any, content: string, emotion: number
         content:"",
     });
 
-    const onChangeInput = (e:{target:{name:string,value:string|number}}) =>{
+    const onChangeInput = (e:{target:{name:string,value:string|number}})=>{
         
-        if (typeof e.target.value === "string") {
+        if (typeof e.target.value === "string" && e.target.name === 'createdDate') {
             let dateValue = new Date(e.target.value);
             setInput({...input,["date"]:dateValue});
+        }
+
+        else if (typeof e.target.value === 'string' && e.target.name === 'text'){
+            setInput({...input,["content"]:e.target.value})
         }
 
         else if (typeof e.target.value === "number") {
@@ -71,15 +76,14 @@ const Editor =({onSubmit}:{onSubmit:(date: any, content: string, emotion: number
 
             <section className="content_section">
                 <h4>오늘의 일기</h4>
-                <textarea placeholder="오늘은 어땟나요?"/>
+                <textarea name="text" placeholder="오늘은 어땟나요?" onChange={onChangeInput}/>
             </section>
 
             <section className="button_section">
-                <Mybutton text="취소하기" onClick={()=>{}}/>
+                <Mybutton text="취소하기" onClick={()=>navigite(-1)}/>
                 <Mybutton text="작성완료" type="positive" onClick={
                     ()=>{
                     onClickSubmitButton();
-                    navigite(-1);
                 }}/>
             </section>
         </div>
