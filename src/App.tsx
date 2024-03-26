@@ -146,9 +146,6 @@ function App() {
               <Route path="/diary/:id" element={<Diary />} />
               <Route path="/edit/:id" element={<Edit />} />
             </Routes>
-            <a href="/new">new로 이동</a>
-            <br />
-            <RouteTest />
           </div>
         </BrowserRouter>
       </DiaryDispatchContext.Provider>

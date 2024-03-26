@@ -115,3 +115,4 @@ DiaryList.defaultProps = {
 };
 
 export default DiaryList;
+

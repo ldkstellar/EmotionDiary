@@ -39,3 +39,4 @@ const DiaryItem = ({ id, emotion, content, date }: info) => {
 };
 
 export default DiaryItem;
+

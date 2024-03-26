@@ -24,13 +24,15 @@ const getStringedDate = (targetDate: Date) => {
 const Editor = ({
   onSubmit,
 }: {
-  onSubmit: (date: any, content: string, emotion: number) => void;
+  onSubmit: ((date: any, content: string, emotion: number) => void)|undefined;
 }) => {
   const navigite = useNavigate();
 
   const onClickSubmitButton = () => {
-    onSubmit(input.date.getTime(), input.content, input.id);
-    navigite("/", { replace: true });
+    if (typeof onSubmit ==="function") {
+      onSubmit(input.date.getTime(), input.content, input.id);
+      navigite("/", { replace: true });
+    }
   };
 
   const [input, setInput] = useState({
@@ -42,10 +44,10 @@ const Editor = ({
   const onChangeInput = (e: {
     target: { name: string; value: string | number };
   }) => {
-    if (typeof e.target.value === "string" && e.target.name === "createdDate") {
+    if (e.target.name === "createdDate") {
       let dateValue = new Date(e.target.value);
       setInput({ ...input, ["date"]: dateValue });
-    } else if (typeof e.target.value === "string" && e.target.name === "text") {
+    } else if (typeof e.target.value === "string") {
       setInput({ ...input, ["content"]: e.target.value });
     } else if (typeof e.target.value === "number") {
       setInput({ ...input, ["id"]: e.target.value });

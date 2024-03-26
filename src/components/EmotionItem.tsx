@@ -17,8 +17,9 @@ const EmotionItem = ({
       }`}
     >
       <img
+        alt="이미"
         className="emotion_img"
-        src={process.env.PUBLIC_URL + `assets/emotion${emotionId}.png`}
+        src={`../../assets/emotion${emotionId}.png`}
       />
       <div className="emotion_name">{emotionName}</div>
     </div>
@@ -26,3 +27,4 @@ const EmotionItem = ({
 };
 
 export default EmotionItem;
+
