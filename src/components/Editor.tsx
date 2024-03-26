@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { info } from "../App";
 import EmotionItem from "./EmotionItem";
 import Mybutton from "./MyButton";
 
@@ -22,9 +23,10 @@ const getStringedDate = (targetDate: Date) => {
 };
 
 const Editor = ({
+  initData,
   onSubmit,
 }: {
-  onSubmit:((date: any, content: string, emotion: number) => void)|undefined;
+  onSubmit:((date: any, content: string, emotion: number) => void),initData?:info
 }) => {
   const navigite = useNavigate();
 
@@ -40,6 +42,12 @@ const Editor = ({
     date: new Date(),
     content: "",
   });
+
+  useEffect(()=>{
+    if (initData) {
+      setInput({...initData,date:new Date(Number(initData.date))})
+    }
+  },[initData])
 
   const onChangeInput = (e: {
     target: { name: string; value: string | number };
@@ -93,6 +101,7 @@ const Editor = ({
           name="text"
           placeholder="오늘은 어땟나요?"
           onChange={onChangeInput}
+          value={input.content}
         />
       </section>
 
