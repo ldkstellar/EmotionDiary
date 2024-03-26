@@ -15,7 +15,7 @@ const Edit = () => {
     const currentDiaryItem = data.find(
       (item) => String(item.id) === String(params.id)
     );
-    console.log(currentDiaryItem);
+   
     
     if (!currentDiaryItem) {
       window.alert("존재하지 않는 일기입니다.");
@@ -29,6 +29,10 @@ const Edit = () => {
       navigate("/", { replace: true });
     }
   };
+
+  const onSubmit = (input:any)=>{
+    onEdit(Number(params.id),input.date,input.content,input.emotionId);
+  }
 
   return (
     <div className="editPage">
@@ -44,7 +48,7 @@ const Edit = () => {
         }
         headerText="일기수정하기"
       />
-      <Editor initData={curDiaryItem} />
+      <Editor initData={curDiaryItem} onSubmit={onSubmit}/>
     </div>
   );
 };

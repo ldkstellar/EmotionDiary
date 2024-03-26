@@ -2,7 +2,7 @@ import { info } from "../App";
 import { useNavigate } from "react-router-dom";
 import Mybutton from "./MyButton";
 
-const DiaryItem = ({ id, emotion, content, date }: info) => {
+const DiaryItem = ({ id, emotionId, content, date }: info) => {
   const navigate = useNavigate();
   const strDate = new Date(date).toLocaleDateString();
 
@@ -19,10 +19,10 @@ const DiaryItem = ({ id, emotion, content, date }: info) => {
         onClick={goDetail}
         className={[
           "emotion_img_wrapper",
-          `emotion_img_wrapper_${emotion}`,
+          `emotion_img_wrapper_${emotionId}`,
         ].join(" ")}
       >
-        <img src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`} />
+        <img src={process.env.PUBLIC_URL + `assets/emotion${emotionId}.png`} />
       </div>
 
       <div onClick={goDetail} className="info_wrapper">

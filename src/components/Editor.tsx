@@ -26,28 +26,28 @@ const Editor = ({
   initData,
   onSubmit,
 }: {
-  onSubmit:((date: any, content: string, emotion: number) => void),initData?:info
+  onSubmit:(input:any) => void,initData?:info
 }) => {
   const navigite = useNavigate();
-
+  useEffect(()=>{
+    if (initData) {
+      setInput({...initData,date:new Date(Number(initData.date))});
+      console.log(initData);
+      
+      
+      
+    }
+  },[initData])
   const onClickSubmitButton = () => {
-    if (typeof onSubmit ==="function") {
-      onSubmit(input.date.getTime(), input.content, input.id);
+      onSubmit(input);
       navigite("/", { replace: true });
     }
-  };
 
-  const [input, setInput] = useState({
-    id: 1,
+  const [input, setInput] = useState<any>({
+    emotionId: 1,
     date: new Date(),
     content: "",
   });
-
-  useEffect(()=>{
-    if (initData) {
-      setInput({...initData,date:new Date(Number(initData.date))})
-    }
-  },[initData])
 
   const onChangeInput = (e: {
     target: { name: string; value: string | number };
@@ -55,10 +55,12 @@ const Editor = ({
     if (e.target.name === "createdDate") {
       let dateValue = new Date(e.target.value);
       setInput({ ...input, ["date"]: dateValue });
+      
     } else if (typeof e.target.value === "string") {
       setInput({ ...input, ["content"]: e.target.value });
-    } else if (typeof e.target.value === "number") {
-      setInput({ ...input, ["id"]: e.target.value });
+    } else if (typeof e.target.value === "number" && e.target.name ==="emotionId") {
+      setInput({ ...input, ["emotionId"]: e.target.value });
+      console.log("dd");
     }
   };
 
@@ -89,7 +91,7 @@ const Editor = ({
               }}
               key={e.emotionId}
               {...e}
-              isSelected={e.emotionId === input.id}
+              isSelected={e.emotionId === input.emotionId}
             />
           ))}
         </div>
@@ -99,9 +101,9 @@ const Editor = ({
         <h4>오늘의 일기</h4>
         <textarea
           name="text"
+          value={input.content}
           placeholder="오늘은 어땟나요?"
           onChange={onChangeInput}
-          value={input.content}
         />
       </section>
 

@@ -63,9 +63,9 @@ const DiaryList = ({ diaryList }: { diaryList: info[] }) => {
 
     const filterCallback = (item: info) => {
       if (filter === "good") {
-        return item.emotion <= 3;
+        return item.emotionId <= 3;
       } else {
-        return item.emotion > 3;
+        return item.emotionId > 3;
       }
     };
 

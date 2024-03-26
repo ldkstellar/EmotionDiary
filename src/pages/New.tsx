@@ -8,6 +8,9 @@ import { DiaryDispatchContext } from "../App";
 const NEW = () => {
   const { onCreate } = useContext(DiaryDispatchContext);
   const navigtion = useNavigate();
+  const onSubmit = (input:any)=>{
+    onCreate(input.date,input.content,input.emotionId)
+  }
   return (
     <div>
       <MyHeader
@@ -15,7 +18,7 @@ const NEW = () => {
         headerText="새일기쓰기"
         rightChild={undefined}
       />
-      <Editor onSubmit={onCreate} />
+      <Editor onSubmit={onSubmit} />
     </div>
   );
 };

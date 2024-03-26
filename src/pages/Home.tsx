@@ -28,10 +28,6 @@ const Home = () => {
     }
   }, [diaryList, curDate]);
 
-  useEffect(() => {
-    console.log(curDate);
-  }, [curDate]);
-
   const headeText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
   const increseMonth = () => {
     setCurDate(
@@ -57,3 +53,4 @@ const Home = () => {
 };
 
 export default Home;
+
