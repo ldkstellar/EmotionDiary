@@ -24,7 +24,7 @@ const getStringedDate = (targetDate: Date) => {
 const Editor = ({
   onSubmit,
 }: {
-  onSubmit: ((date: any, content: string, emotion: number) => void)|undefined;
+  onSubmit:((date: any, content: string, emotion: number) => void)|undefined;
 }) => {
   const navigite = useNavigate();
 
