@@ -43,7 +43,7 @@ const Editor = ({
       navigite("/", { replace: true });
     }
 
-  const [input, setInput] = useState<any>({
+  const [input, setInput] = useState({
     emotionId: 1,
     date: new Date(),
     content: "",
