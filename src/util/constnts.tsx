@@ -1,9 +1,9 @@
 export const EmotionList = [
-  { emotionId: 1, emotionName: "완전좋음" },
-  { emotionId: 2, emotionName: "좋음" },
-  { emotionId: 3, emotionName: "그럭저럭" },
+  { emotionId: 1, emotionName: "verygood" },
+  { emotionId: 2, emotionName: "good" },
+  { emotionId: 3, emotionName: "soso" },
   { emotionId: 4, emotionName: "bad" },
-  { emotionId: 5, emotionName: "매우bad" },
+  { emotionId: 5, emotionName: "worst" },
 ];
 
 export const getStringedDate = (targetDate: Date) => {
