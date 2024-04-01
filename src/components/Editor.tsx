@@ -3,14 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { info } from "../App";
 import EmotionItem from "./EmotionItem";
 import Mybutton from "./MyButton";
-
-const EmotionList = [
-  { emotionId: 1, emotionName: "완전좋음" },
-  { emotionId: 2, emotionName: "좋음" },
-  { emotionId: 3, emotionName: "그럭저럭" },
-  { emotionId: 4, emotionName: "나쁨" },
-  { emotionId: 5, emotionName: "매우나쁨" },
-];
+import { EmotionList } from "../util/constnts";
 
 const getStringedDate = (targetDate: Date) => {
   let year = targetDate.getFullYear();
@@ -26,22 +19,20 @@ const Editor = ({
   initData,
   onSubmit,
 }: {
-  onSubmit:(input:any) => void,initData?:info
+  onSubmit: (input: any) => void;
+  initData?: info;
 }) => {
   const navigite = useNavigate();
-  useEffect(()=>{
+  useEffect(() => {
     if (initData) {
-      setInput({...initData,date:new Date(Number(initData.date))});
+      setInput({ ...initData, date: new Date(Number(initData.date)) });
       console.log(initData);
-      
-      
-      
     }
-  },[initData])
+  }, [initData]);
   const onClickSubmitButton = () => {
-      onSubmit(input);
-      navigite("/", { replace: true });
-    }
+    onSubmit(input);
+    navigite("/", { replace: true });
+  };
 
   const [input, setInput] = useState({
     emotionId: 1,
@@ -55,10 +46,12 @@ const Editor = ({
     if (e.target.name === "createdDate") {
       let dateValue = new Date(e.target.value);
       setInput({ ...input, ["date"]: dateValue });
-      
     } else if (typeof e.target.value === "string") {
       setInput({ ...input, ["content"]: e.target.value });
-    } else if (typeof e.target.value === "number" && e.target.name ==="emotionId") {
+    } else if (
+      typeof e.target.value === "number" &&
+      e.target.name === "emotionId"
+    ) {
       setInput({ ...input, ["emotionId"]: e.target.value });
       console.log("dd");
     }
